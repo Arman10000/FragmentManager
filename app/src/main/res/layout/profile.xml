@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.Fragment3">
+    tools:context=".fragment.Profile">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/fragment_3" />
+        android:text="@string/profile" />
 
 </FrameLayout>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.progressindicator.LinearProgressIndicator xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/progressBar2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Fragment2">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/fragment_2" />
-
-</FrameLayout>
+    android:layout_height="wrap_content"
+    android:indeterminate="false"
+    android:max="5"
+    android:progress="0"
+    app:indicatorColor="@color/green"
+    app:trackThickness="30dp"
+    tools:context=".fragment.Fragment2" />

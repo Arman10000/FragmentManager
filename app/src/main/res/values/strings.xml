@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FragmentManager</string>
+    <string name="home">home</string>
+    <string name="profile">profile</string>
     <string name="fragment_1">fragment 1</string>
-    <string name="fragment_2">fragment 2</string>
     <string name="fragment_3">fragment 3</string>
-    <string name="fragment_4">fragment 4</string>
 </resources>
