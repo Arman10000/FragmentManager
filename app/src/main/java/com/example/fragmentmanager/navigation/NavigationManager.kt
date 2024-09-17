@@ -27,6 +27,10 @@ class NavigationManager(
     )
 
     init {
+        if (savedStateRegistryOwner.lifecycle.currentState != Lifecycle.State.INITIALIZED) {
+            error("can't build ${this::class.java.simpleName} after onCreate")
+        }
+
         registerObserver()
 
         restoreInstanceState {
@@ -34,8 +38,6 @@ class NavigationManager(
             tabsStarted[HOME_STACK] = it.getBoolean(HOME_STACK)
             tabsStarted[PROFILE_STACK] = it.getBoolean(PROFILE_STACK)
         }
-
-        restoreBackStack(currentTabId)
 
         registerSavedInstanceStateListener {
             bundleOf(
@@ -46,12 +48,12 @@ class NavigationManager(
         }
     }
 
-    override fun onStop(owner: LifecycleOwner) {
-        saveBackStack()
-    }
-
     override fun onStart(owner: LifecycleOwner) {
         restoreBackStack(currentTabId)
+    }
+
+    override fun onStop(owner: LifecycleOwner) {
+        saveBackStack()
     }
 
     override fun onDestroy(owner: LifecycleOwner) {
@@ -185,7 +187,7 @@ class BottomNavigationManager(
 }
 
 fun Fragment.getNavigationManager(currentFullScreen: Boolean): NavigationManager {
-    if (lifecycle.currentState != Lifecycle.State.INITIALIZED) error("getNavigationManager method cannot be called after or before onCreate")
+    if (lifecycle.currentState != Lifecycle.State.INITIALIZED) error("can't call getNavigationManager after or before onCreate")
     val mainActivity = (requireActivity() as MainActivity)
     BottomNavigationManager(this, mainActivity.bottomNavigation, currentFullScreen)
     return mainActivity.navigationManager
