@@ -187,7 +187,10 @@ class BottomNavigationManager(
 }
 
 fun Fragment.getNavigationManager(currentFullScreen: Boolean): NavigationManager {
-    if (lifecycle.currentState != Lifecycle.State.INITIALIZED) error("can't call getNavigationManager after or before onCreate")
+    if (lifecycle.currentState != Lifecycle.State.INITIALIZED) {
+        val methodName = object {}.javaClass.enclosingMethod!!.name
+        error("can't call $methodName after onCreate")
+    }
     val mainActivity = (requireActivity() as MainActivity)
     BottomNavigationManager(this, mainActivity.bottomNavigation, currentFullScreen)
     return mainActivity.navigationManager
