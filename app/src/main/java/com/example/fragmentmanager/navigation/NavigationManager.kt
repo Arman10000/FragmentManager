@@ -1,7 +1,6 @@
 package com.example.fragmentmanager.navigation
 
 import android.os.Bundle
-import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -13,7 +12,6 @@ import com.example.fragmentmanager.R
 import com.example.fragmentmanager.activity.MainActivity
 import com.example.fragmentmanager.fragment.Home
 import com.example.fragmentmanager.fragment.Profile
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class NavigationManager(
     private val savedStateRegistryOwner: SavedStateRegistryOwner,
@@ -155,34 +153,6 @@ class NavigationManager(
         private const val HOME_STACK = "home_stack"
         private const val PROFILE_STACK = "profile_stack"
         private const val CURRENT_TAB_ID = "current_tab_id"
-    }
-}
-
-class BottomNavigationManager(
-    private val lifecycleOwner: LifecycleOwner,
-    private val bottomNavigation: BottomNavigationView,
-    private var fullScreen: Boolean
-) : DefaultLifecycleObserver {
-
-    init {
-        registerObserver()
-    }
-
-    override fun onStart(owner: LifecycleOwner) {
-        if (fullScreen) bottomNavigation.visibility = View.GONE
-        else bottomNavigation.visibility = View.VISIBLE
-    }
-
-    override fun onDestroy(owner: LifecycleOwner) {
-        unregisterObserver()
-    }
-
-    private fun registerObserver() {
-        lifecycleOwner.lifecycle.addObserver(this)
-    }
-
-    private fun unregisterObserver() {
-        lifecycleOwner.lifecycle.removeObserver(this)
     }
 }
 
