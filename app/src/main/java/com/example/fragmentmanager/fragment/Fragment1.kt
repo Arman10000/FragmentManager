@@ -1,6 +1,5 @@
 package com.example.fragmentmanager.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -8,7 +7,6 @@ import androidx.fragment.app.Fragment
 import com.example.fragmentmanager.R
 import com.example.fragmentmanager.navigation.NavigationManager
 import com.example.fragmentmanager.navigation.getNavigationManager
-import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class Fragment1 : Fragment(R.layout.fragment_1) {
 
